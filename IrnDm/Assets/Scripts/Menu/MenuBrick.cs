@@ -17,4 +17,12 @@ public class MenuBrick : MonoBehaviour {
 	void Update () {
         transform.Translate(new Vector3(0, Amplitude * Mathf.Sin(Time.time * FloatingSpeed)));
 	}
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        FindObjectOfType<MenuController>().MenuItemHit(this.itemType);
+    }
+    public void ChangeDisplayText(string text) {
+        GetComponentInChildren<TextMesh>().text = text;
+    }
 }

@@ -6,6 +6,8 @@ public enum MenuItemType {StartGame, Difficulty, Exit}
 
 public class MenuController : MonoBehaviour {
 
+    int difficulty = 0;
+    private string[] difficulties = new string[] { "Easy", "Normal", "Bring it on", "Hard", "Thou shalt be ripped" };
 	// Use this for initialization
 	void Start () {
 		
@@ -23,9 +25,17 @@ public class MenuController : MonoBehaviour {
                 FindObjectOfType<GameController>().StartGame();
                 break;
             case MenuItemType.Difficulty:
-
+                difficulty = difficulty < 5 ? difficulty + 1 : 0;
+                foreach (var item in GetComponentsInChildren<MenuBrick>())
+                {
+                    if (item.itemType == MenuItemType.Difficulty)
+                    {
+                        item.ChangeDisplayText("Difficulty:\n" + difficulties[difficulty]);
+                    }
+                }
                 break;
             case MenuItemType.Exit:
+                Debug.Log("EXIT"); //TODO swapped out with halt command
                 break;
         }
     }
@@ -38,4 +48,6 @@ public class MenuController : MonoBehaviour {
     {
         //Show children
     }
+
+    
 }
