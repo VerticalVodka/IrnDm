@@ -10,6 +10,7 @@ public class TargetSpawner : MonoBehaviour {
 
     private bool isSpawning = false;
     private bool readyNow = true;
+    private int difficulty;
 
 	// Use this for initialization
 	void Start () {
@@ -38,7 +39,8 @@ public class TargetSpawner : MonoBehaviour {
         return gameObject.transform;
     }
 
-    public void StartSpawning() {
+    public void StartSpawning(int difficulty) {
+        this.difficulty = difficulty;
         isSpawning = true;
     }
 

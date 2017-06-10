@@ -21,8 +21,6 @@ public class ProjectileBehaviour : MonoBehaviour {
     {
         if (particleSystemPrefab != null)
         {
-            Debug.Log(gameObject.transform.position.y);
-            Debug.Log(particleSystemPrefab);
             GameObject particleSystem = Instantiate(particleSystemPrefab, gameObject.transform.position,Quaternion.identity);
             Destroy(particleSystem,5);
         }

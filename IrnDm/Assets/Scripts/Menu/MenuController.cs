@@ -22,10 +22,10 @@ public class MenuController : MonoBehaviour {
         switch (itemType)
         {
             case MenuItemType.StartGame:
-                FindObjectOfType<GameController>().StartGame();
+                FindObjectOfType<GameController>().StartGame(difficulty);
                 break;
             case MenuItemType.Difficulty:
-                difficulty = difficulty < 5 ? difficulty + 1 : 0;
+                difficulty = difficulty < 4 ? difficulty + 1 : 0;
                 foreach (var item in GetComponentsInChildren<MenuBrick>())
                 {
                     if (item.itemType == MenuItemType.Difficulty)
@@ -41,12 +41,12 @@ public class MenuController : MonoBehaviour {
     }
 
     public void HideMenu() {
-        //Hide all children
+        gameObject.SetActive(false);
     }
 
     public void ShowMenu()
     {
-        //Show children
+        gameObject.SetActive(true);
     }
 
     
